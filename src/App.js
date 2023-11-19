@@ -35,7 +35,7 @@ function App() {
     <div>
       <Navbar />
       {BooksList.map((item, index) => <Book key={index} book={item}/>)}
-      <Book />
+      {/* <Book /> */}
       {/* <Books /> */}
     </div>
   );
