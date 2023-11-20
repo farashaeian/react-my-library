@@ -1,4 +1,5 @@
-import  Book  from "./Book";
+import React, { useState } from 'react';
+import Book from "./Book";
 
 const Books = () => {
 
@@ -26,9 +27,19 @@ const Books = () => {
         }
     ];
 
+    const [selectedBook, setSelectedBook] = useState();
+
+    const showBook = (book) => {
+        setSelectedBook(book);
+    };
+
     return (
         <>
-            {BooksList.map((item, index) => <Book key={index} book={item} />)}
+            {BooksList.map((item, index) =>
+                <p key={index} onClick={() => showBook(item)}>{item.Name}</p>
+            )}
+            <hr />
+            {selectedBook && <Book book={selectedBook} />}
         </>
     );
 }
