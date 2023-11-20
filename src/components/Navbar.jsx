@@ -1,9 +1,11 @@
+import logo from '../logo.png';
+
 import { Green, Purple, Comment } from "../helpers/colors";
 
 const Navbar = () => {
     return (
         <>
-            <div className="home-navbar" style={{backgroundColor:Comment}}>
+            <div className="home-navbar" style={{ backgroundColor: Comment }}>
                 <span className="pe-2 fw-bold" style={{ color: Green }}>
                     My Library
                 </span>
