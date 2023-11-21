@@ -1,17 +1,15 @@
 import React, { useState } from 'react';
 import Book from "./Book";
-// import SearchBar from './SearchBar';
 
 const Books = () => {
-
-    const BooksList = [
+    const initialBooksList = [
         {
             "Name": 'Sad Drama',
             'Author': 'Jck Black',
             "Publisher": 'Store',
             'Genre': 'drama',
             "Prices": '40',
-            "Borowers": ['Jack', 'Human', 'Jhon']
+            "Borrowers": ['Jack', 'Human', 'Jhon']
         },
         {
             "Name": 'Red Dragon',
@@ -19,7 +17,7 @@ const Books = () => {
             "Publisher": 'Potters',
             "Genre": 'Fiction',
             "Prices": '20',
-            "Borowers": []
+            "Borrowers": []
         },
         {
             "Name": 'Nice Drama',
@@ -27,18 +25,18 @@ const Books = () => {
             "Publisher": 'Store',
             "Genre": 'drama',
             "Prices": '35',
-            "Borowers": ['Jack', 'Human']
+            "Borrowers": ['Jack', 'Human']
         }
     ];
 
+    const [booksList, setBooksList] = useState(initialBooksList);
     const [searchTerm, setSearchTerm] = useState('');
-
-    // const [filteredData, setFilteredData] = useState(BooksList);
-
-    const [selectedBook, setSelectedBook] = useState();
+    const [selectedBook, setSelectedBook] = useState(null);
+    const [selectedLeftColumnBook, setSelectedLeftColumnBook] = useState(null);
 
     const showBook = (book) => {
         setSelectedBook(book);
+        setSelectedLeftColumnBook(book);
     };
 
     const handleSearch = (event) => {
@@ -47,52 +45,56 @@ const Books = () => {
     };
 
     // Filter books based on the search term
-    const filteredBooks = BooksList.filter((book) =>
-        book.Name.toLowerCase().includes(searchTerm.toLowerCase())
+    const filteredBooks = booksList.filter((book) =>
+        searchTerm !== '' && book.Name.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
     return (
         <>
             <div className='row'>
                 <div className='p-5 col-6'>
-                    {/* <SearchBar
-                        data={BooksList}
-                        setFilteredData={setFilteredData} />
-                    <br /> */}
-                    {BooksList.map((item, index) =>
-                        <p key={index} onClick={() => showBook(item)}>{item.Name}</p>
-                    )}
+                    {/* Display books in the left column */}
+                    {booksList.map((item, index) => (
+                        <p key={index} onClick={() => showBook(item)}>
+                            {item.Name}
+                        </p>
+                    ))}
                     <div>
                         <button>+ Add</button>
                     </div>
                     <hr />
-                    {selectedBook && <Book book={selectedBook} />}
-                </div>
-                <div className='col-6'>
-                    <div>
-                        {/* Search bar */}
-                        <input
-                            type="text"
-                            placeholder="Search for a book..."
-                            value={searchTerm}
-                            onChange={handleSearch}
-                        />
 
-                        {/* Display search results */}
-                        {filteredBooks.map((item, index) => (
-                            <p key={index} onClick={() => showBook(item)}>
-                                {item.Name}
-                            </p>
-                        ))}
-
-                        {/* Conditionally render the Book component if selectedBook is not null */}
-                        {selectedBook && <Book book={selectedBook} />}
-                    </div>
-                    {/* {filteredData.map((item) => (
-                        <div key={item.id}>
-                            <div>{item.Name}</div>
+                    {/* Show the selected book from the left column below it */}
+                    {selectedLeftColumnBook && (
+                        <div>
+                            <h2>Selected Book from Left Column</h2>
+                            <Book book={selectedLeftColumnBook} />
                         </div>
-                    ))} */}
+                    )}
+                </div>
+                <div className='p-5 col-6'>
+                    {/* Search bar */}
+                    <input
+                        type="text"
+                        placeholder="Search for a book..."
+                        value={searchTerm}
+                        onChange={handleSearch}
+                    />
+
+                    {/* Display search results in the right column */}
+                    {searchTerm !== '' && (
+                        <>
+                            {filteredBooks.length > 0 ? (
+                                filteredBooks.map((item, index) => (
+                                    <p key={index} onClick={() => showBook(item)}>
+                                        {item.Name}
+                                    </p>
+                                ))
+                            ) : (
+                                <p>No matching books found</p>
+                            )}
+                        </>
+                    )}
                 </div>
             </div>
         </>
