@@ -1,33 +1,11 @@
 import React, { useState } from 'react';
 import Book from "./Book";
+import { getBooks } from '../data/data';
 
 const Books = () => {
-    const initialBooksList = [
-        {
-            "Name": 'Sad Drama',
-            'Author': 'Jck Black',
-            "Publisher": 'Store',
-            'Genre': 'drama',
-            "Prices": '40',
-            "Borrowers": ['Jack', 'Human', 'Jhon']
-        },
-        {
-            "Name": 'Red Dragon',
-            "Author": 'William Hook',
-            "Publisher": 'Potters',
-            "Genre": 'Fiction',
-            "Prices": '20',
-            "Borrowers": []
-        },
-        {
-            "Name": 'Nice Drama',
-            "Author": 'Alex Been',
-            "Publisher": 'Store',
-            "Genre": 'drama',
-            "Prices": '35',
-            "Borrowers": ['Jack', 'Human']
-        }
-    ];
+
+    // get data from a js file  ith a function instead of locating the array directly here:
+    const initialBooksList = getBooks();
 
     const [booksList, setBooksList] = useState(initialBooksList);
     const [searchTerm, setSearchTerm] = useState('');
@@ -51,9 +29,10 @@ const Books = () => {
 
     return (
         <>
-        <div className='row'>
-            <h4 className='p-5'>books</h4>
-        </div>
+            <div className='row'>
+                <h1 className='text-center p-5'>books</h1>
+            </div>
+            <hr />
             <div className='row'>
                 <div className='p-5 col-6'>
                     {/* Display books in the left column */}
@@ -70,7 +49,7 @@ const Books = () => {
                     {/* Show the selected book from the left column below it */}
                     {selectedLeftColumnBook && (
                         <div>
-                            <h2>Selected Book from Left Column</h2>
+                            <h2>Selected Book</h2>
                             <Book book={selectedLeftColumnBook} />
                         </div>
                     )}
