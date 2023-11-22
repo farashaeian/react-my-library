@@ -6,7 +6,12 @@ const Users = () => {
 
     return (
         <>
-            {usersList.map((item, index) => <User user={item} />)}
+            <div className="p-5">
+                <h4 className="p-5">Users</h4>
+            </div>
+            <div className="p-5">
+                {usersList.map((item, index) => <User user={item} />)}
+            </div>
         </>
     );
 }
