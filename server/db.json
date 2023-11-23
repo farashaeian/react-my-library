@@ -1,5 +1,5 @@
 {
-    "booksList" : [
+    "books" : [
         {
             "Id":"1",
             "Name": "Sad Drama",
@@ -29,7 +29,7 @@
         }
     ],
 
-    "usersList" : [
+    "users" : [
         {
             "id":"1",
             "Name": "Lili",

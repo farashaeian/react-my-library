@@ -1,8 +1,6 @@
 import User from "./User";
 
-const Users = () => {
-
-    const usersList = [];
+const Users = ({users}) => {
 
     return (
         <>
@@ -11,7 +9,7 @@ const Users = () => {
             </div>
             <hr />
             <div className="p-5">
-                {usersList.map((item, index) => <User user={item} />)}
+                {users.map((item, index) => <User key={item.id} user={item} />)}
             </div>
         </>
     );

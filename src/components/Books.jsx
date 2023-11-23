@@ -7,6 +7,8 @@ const Books = () => {
     // get data from a js file  ith a function instead of locating the array directly here:
     const initialBooksList = getBooks();
 
+    // const initialBooksList = books;
+
     const [booksList, setBooksList] = useState(initialBooksList);
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedBook, setSelectedBook] = useState(null);
