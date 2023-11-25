@@ -4,3 +4,4 @@ export {default as SearchBar} from "./SearchBar";
 export {default as Books} from "./Books";
 export {default as User} from "./User";
 export {default as Users} from "./Users";
+export {default as Footer} from "./Footer";

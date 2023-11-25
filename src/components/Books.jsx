@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Book from "./Book";
+import Footer from './Footer';
 import { getBooks } from '../data/data';
 
 const Books = () => {
@@ -60,7 +61,7 @@ const Books = () => {
                     {/* Search bar */}
                     <input
                         type="text"
-                        placeholder="Search for a book..."
+                        placeholder="Search A Book Name..."
                         value={searchTerm}
                         onChange={handleSearch}
                     />
@@ -81,6 +82,7 @@ const Books = () => {
                     )}
                 </div>
             </div>
+            <Footer />
         </>
     );
 }
