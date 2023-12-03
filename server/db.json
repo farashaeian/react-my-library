@@ -1,7 +1,7 @@
 {
     "books" : [
         {
-            "Id":"1",
+            "id":"1",
             "Name": "Sad Drama",
             "Author": "Jck Black",
             "Publisher": "Store",
@@ -10,7 +10,7 @@
             "Borrowers": ["Jack", "Human", "Jhon"]
         },
         {
-            "Id":"2",
+            "id":"2",
             "Name": "Red Dragon",
             "Author": "William Hook",
             "Publisher": "Potters",
@@ -19,7 +19,7 @@
             "Borrowers": []
         },
         {
-            "Id":"3",
+            "id":"3",
             "Name": "Nice Drama",
             "Author": "Alex Been",
             "Publisher": "Store",
